@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-segurity">
+    
+    <head th:replace= "/fragments/head :: head"> </head>
+    
+   <body>
+       
+       
+       <div th:replace= "/fragments/nav_user :: div"></div>
+       
+       
+        <div>
+            
+            <h2>Cargar el Libro aqui!</h2>
+            
+        </div>
+       
+        <div class="container-fluid m-5 contenedor">
+       
+            
+            <form  class="formulario" th:action="@{/libro/modificar/__${libro.isbn}__}" method="POST">
+                
+                <div th:if="${error != null}" class="card text-white bg-danger -mb-3 mensajeError">
+                    <div class="card-body">
+                        <h5 class="card-title">Error!!!!</h5>
+                        <p class="card-text" th:text="${error}" ></p>
+                    </div>                   
+                </div>
+                <div th:if="${exito != null}" class="card text-white bg-danger -mb-3 mensajeExito">
+                    <div class="card-body">
+                        <h5 class="card-title">Exito!!!!</h5>
+                        <p class="card-text" th:text="${exito}"></p>
+                    </div>                   
+                </div>                
+                
+                <div class="form-group my-3">
+                    <label class="mb-2">Modificar Libro</label>
+                    <input th:value="${isbn}" type="number" class="form-control" name="isbn" placeholder="ISBN">                    
+                </div>
+                
+                <div class="form-group my-3">
+                    <input th:value="${libro.titulo}" type="text" class="form-control" name="titulo" placeholder="Titulo del Libro">                    
+                </div>
+                
+                <div class="form-group my-3">
+                    <input th:value="${libro.ejemplares}" type="number" class="form-control" name="ejemplares" placeholder="Cantidad de Ejemplares">                    
+                </div>
+                
+               
+                
+                
+                <div class="form-grupo my-3">
+                    
+                    <select name="idAutor">
+                        
+                    <option> Seleccionar Autor </option>
+
+
+                    <option th:each="autor : ${autores}"
+                            th:value="${autor.id}"
+                            th:text="${autor.nombre}"/>
+                    
+                    </select>
+                </div>
+                
+                <div class="form-grupo my-3">
+                    
+                    <select name="idEditorial">
+                        
+                    <option> Seleccionar Editorial </option>
+
+
+                    <option th:each="editorial : ${editoriales}"
+                            th:value="${editorial.id}"
+                            th:text="${editorial.nombre}"/>
+                    
+                    </select>
+                </div>
+                
+                
+                 <button type="submit" class="btn btn-primary">Actualizar</button>
+            </form>
+            
+            <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mt-3 mensajeError">
+                <div class="card-body">
+                    <h5 class="card-title">Error!!</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
+            </div>
+                
+                
+            <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                <div class="card-body">
+                    <h5 class="card-title">Exito!</h5>
+                    <p class="card-text" th:text="${exito}"></p>
+                </div>
+            </div>        
+            
+        </div>
+    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+</html>

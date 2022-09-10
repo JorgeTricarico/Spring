@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-segurity">
+    
+    <head th:replace= "/fragments/head :: head"></head>
+    
+    <body>
+        
+        <div th:replace= "/fragments/nav_user :: div"></div>
+        
+        
+        <div>
+            
+            <h2>Cargar la Editorial aqui!</h2>
+            
+        </div>
+        <div class="container">
+            
+            <form th:action="@{/editorial/registro}" method="POST">
+                
+                <div class="form-group">
+                    <input type="text" class="form-group" name="nombre" placeholder="Nombre de la Editorial">                   
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Subir</button>
+                
+            </form>
+            
+            
+        </div>
+        
+        <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mt-3 mensajeError">
+                <div class="card-body">
+                    <h5 class="card-title">Error!!</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
+            </div>
+                
+                
+            <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                <div class="card-body">
+                    <h5 class="card-title">Exito!</h5>
+                    <p class="card-text" th:text="${exito}"></p>
+                </div>
+            </div>        
+                
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+</html>

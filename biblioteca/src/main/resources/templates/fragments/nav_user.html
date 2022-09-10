@@ -1,0 +1,57 @@
+<div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom nav-tab">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                    <span class="fs-4">Biblioteca</span>
+                </a>
+
+                <ul class="nav nav-tabs" th:if="${session.usuariosession != null}">
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Libros</a>
+                        <ul class="dropdown-menu">
+                            <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" href="/libro/registrar">Agregar Libro</a></li>
+                            <li><a class="dropdown-item" href="/libro/lista">Lista de Libro</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Autores</a>
+                        <ul class="dropdown-menu">
+                            <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" href="/autor/registrar">Agregar Autor</a></li>
+                            <li><a class="dropdown-item" href="/autor/lista">Lista de Autores</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Editoriales</a>
+                        <ul class="dropdown-menu">
+                            <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" href="/editorial/registrar">Agregar Editorial</a></li>
+                            <li><a class="dropdown-item" href="/editorial/lista">Lista de Autores</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Perfil</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                                      
+
+                </ul>
+                
+                <ul class="nav nav-pills" th:if="${session.usuariosession == null}">
+                    
+                    
+<!--                    <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>-->
+                    <li class="nav-item"><a href="/registrar" class="nav-link h2">¡Registrate!</a></li>
+                    <li class="nav-item"><a href="/login" class="nav-link h2 me-2 active">Inicio de sesión</a></li>
+                    
+                    
+                    
+                </ul>
+            </header>
+        </div>
