@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-segurity">
+
+    <head th:replace= "/fragments/head :: head"></head>
+
+    <body>
+
+        <div th:replace= "/fragments/nav_user :: div"></div>
+        
+        <div th:replace= "/fragments/error_exito :: div"></div> 
+
+<header class="header">
+            <section class="contenedorMain">
+                <div class="tituloBiblioteca">
+                    <a class="navbar-brand" th:text="'Error ' + ${codigo}">BIBLIOTECA EGG</a>
+                    <p class="tituloLibros" th:text="${mensaje}"></p>
+                    
+                </div>
+                <section class="text-center container">
+			<div class="row mt-3">
+				<div class="divVolver">
+					<a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+				</div>
+			</div>
+		</section>
+                <div class="container contenedorLibros">
+                    <p class="tituloLibros" th:if="${session.usuariosession != null}" th:text=" 'Hola de vuelta '+ ${session.usuariosession.nombre} "></p>
+                   
+                </div>
+                <div class="bg-circle-1 bg-circle"></div>
+                <div class="bg-circle-2 bg-circle"></div>
+                <div class="bg-circle-3 bg-circle"></div>
+                <div class="bg-circle-4 bg-circle"></div>
+            </section>
+        </header>
+        
+        
+        
+        
+
+
+    </body>
+    
+    <div th:replace= "/fragments/script :: div"></div>
+</html>

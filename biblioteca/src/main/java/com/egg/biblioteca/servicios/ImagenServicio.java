@@ -43,7 +43,7 @@ public class ImagenServicio {
         return null;
     }
     
-    public Imagen Actualizar(MultipartFile archivo, String idImagen) throws MiException{
+    public Imagen actualizar(MultipartFile archivo, String idImagen) throws MiException{
        
         if(archivo != null){
             try {

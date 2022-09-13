@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-segurity">
+    
+    <head th:replace= "/fragments/head :: head"></head>
+
+
+    <body>
+        <div th:replace= "/fragments/nav_user :: div"></div>
+        
+        <div th:replace= "/fragments/error_exito :: div"></div>
+        
+         <div class="container m-5" >
+
+            <table class="table table-dark">
+                <thead class="align-items-center">
+                    <tr >
+                        <th scope="col">Id del Usuario</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Foto de Perfil</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Cambiar Rol</th>
+                        <th scope="col">Modificar</th>
+
+                    </tr>
+                </thead>
+                <tbody th:each="usuario : ${usuarios}"> 
+                    <tr>
+                        <th scope="row" th:text="${usuario.id}"></th>
+                        <td th:text="${usuario.nombre}"></td>
+                        <td 
+                            <a><img th:if="${usuario.imagen != null}" class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}" ></a>
+                        </td>
+
+                        <td th:text="${usuario.rol}"></td>
+
+                        <td>
+                            <a th:href= "@{/admin/modificarRol/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Cambiar</a>
+                        </td>
+
+                        <td>
+                            <a th:href= "@{/usuario/modificar/__${usuario.id}__}"><i class="fas fa-feather-alt"></i> Modificar</a>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+            
+
+            <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <p><a th:href="@{/admin/dashboard }" class="btn btn-primary my-2">Volver</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </body>
+
+    <div th:replace= "/fragments/script :: div"></div>
+
+</html>
